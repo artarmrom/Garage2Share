@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="java.util.*" %>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix ="c" %>
 <!DOCTYPE html>
 
 <html>
@@ -7,9 +9,6 @@
   <title>Garage2Share</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="/garaje/view/funcionesAjax.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
@@ -19,7 +18,7 @@
 	<script src="style/jquery-3.3.1.min.js"></script>
 	<script src="style/bootstrap/js/bootstrap.js"></script>
 	<script src="style/alertifyjs/alertify.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>	
+	<script src="funcionesAjax.js"></script>
   <style>
       .header1 
       {
@@ -43,7 +42,18 @@
       	text-align: center;
   		position: relative;
       }
-      /*Eliminamos los margenes y paddings que agrega el navegador por defecto*/
+      
+		.table{
+			border:1px solid-black;
+			border-collapse: collapse;
+			width: 70%;
+		}
+		.tableHead{
+			color:black;
+			background-color: #b5f2f2;
+			height: 50px;
+		}
+		      /*Eliminamos los margenes y paddings que agrega el navegador por defecto*/
 		* {
 		  padding: 0;
 		  margin: 0;
@@ -121,7 +131,7 @@
      width: 250px;
   }
   
-  		  		h1,h2{
+  		h1,h2{
 		  font-size:40px;
 		  color:#0B618A;
 		  }
@@ -131,8 +141,8 @@
 		  font-weight:bold;
 		  text-align:center;
 	  }
-		
-</style>
+  
+  </style>
 </head>
 <body>
 <header>
@@ -157,56 +167,29 @@
     <div>
         <div>
               <h2 class="text-center"><strong>
-              	Rellena los datos de tu garaje
+              	Busca el garaje por la zona y el tipo de vehiculo que deseas
               </strong></h2>
+              <br></br>
         </div>
-            <p></p>
-            <p></p> 
-
+        <form action="/garaje/listagarage" method = "get">
   <div>
-	  <label style="font-size:17px">Ciudad</label></br>
-    <select id="lugar" name="lugar" >
-		<option value="leganes" SELECTED > Leganés 
-		<option value="getafe"> Getafe
-		<option value="fuenlabrada"> Fuenlabrada 
-		<option value="centro">  Madrid centro
-		<option value="villaverde"> Villaverde
+  	  </br><label style="font-size:17px">Ciudad</label></br>
+    <select id="lugar">
+		<option value="leganes" SELECTED> Leganés 
+		<option value="getafe" > Getafe
+		<option value="fuenlabrada" > Fuenlabrada 
+		<option value="centro" >  Madrid centro
+		<option value="villaverde" > Villaverde
 </select>
-<p></p>
-	<label style="font-size:17px">Tipo de Vehiculo</label></br>
-<select id="tipo" name="tipo">
+	</br><label style="font-size:17px">Tipo de Vehiculo</label></br>
+<select id="tipo">
 		<option value="coche" SELECTED> Coche 
-		<option value="furgoneta"> Furgoneta
-		<option value="moto"> Moto 
+		<option value="furgoneta" > Furgoneta
+		<option value="moto" > Moto 
 		<option value="caravana">  Caravana
 </select>
-<p>
-</p>
-<div>
-        <label >Dirección</label>
-        <input type="text" class="form-control"  id="direccion" name="direccion">
-</div>
-<p>
-</p>
-<div>
-        <label >Numero plaza</label>
-        <input type="text" class="form-control"  id="plaza" name="plaza">
-</div>
-<p>
-</p>
-<div>
-        <label >Codigo puerta</label>
-        <input type="text" class="form-control"  id="codigo" name="codigo">
-</div>
-<p>
-</p>
-<div>
-        <label >Precio</label>
-        <input type="text" class="form-control"  id="precio" name="precio">
-</div>
-<p>
-</p>
-		<label style="font-size:17px">Horario libre</label></br>
+
+		</br><label style="font-size:17px">Horario libre</label></br>
 		<label>Inicio</label></br>
 <select id="diainicial">
 		<option value="10" SELECTED> 10/05
@@ -257,89 +240,69 @@
 </select>
 <p>
 </p>
-    <button class="btn btn-info" type="submit"  id="agregar" name="agregar" >
-		<span  class="glyphicon glyphicon-plus"></span> Agregar</button>
+	<button class="btn btn-info">
+        <span  class="glyphicon glyphicon-search"></span> Buscar
+    </button>
+<br></br>
+<p></p>
+</div>
+</form>
+<form action="/garaje/masgaraje" method="post">
+<div>
+	<table style="margin: 0 auto;" class = "table table-hover table-condensed table-bordered table-striped"  border = "1">
+		<tr>
+			<th class = "tableHead"> Identificador</th>
+			<th class = "tableHead"> Hora inicio</th>
+			<th class = "tableHead"> Hora fin</th>
+			<th class = "tableHead"> Lugar</th>
+			<th class = "tableHead"> Dirección</th>
+			<th class = "tableHead"> Tipo de garaje</th>
+			<th class = "tableHead"> Precio</th>
+			<th class = "tableHead"> Elección</th>
+		</tr>
+		<c:forEach var="g" items="${garages}">
+    <tr>
+    	<td>
+            <c:out id = "uid" value="${g.id}"></c:out> 
+        </td>
+        <td>
+            <c:out id = "initialtime" value="${g.initialTime}"></c:out> 
+        </td>
+        <td>
+            <c:out id = "endtime" value="${g.endTime}"></c:out> 
+        </td>
+        <td>
+            <c:out id ="place" value="${g.place}"></c:out> 
+        </td>
+        <td>
+            <c:out id="direction"value="${g.direction}"></c:out> 
+        </td>
+        <td>
+            <c:out id="vehicle" value="${g.vehicle}"></c:out> 
+        </td>
+        <td>
+            <c:out id="price" value="${g.price}"></c:out> 
+        </td>
+        <td>
+            <input value="${g.id}" type="radio" id="elec" name="elec">
+        </td>
+    </tr>
+   </c:forEach>
+</table>
+	<br></br>
+	<button class="btn btn-info">
+        <span  class="glyphicon glyphicon-send"></span> Continuar
+    </button>
   </div>
-    
+</form>
+<p></p>
+<p></p>       
     </div>
   </div>
 <div class="downText" >
     <div class="text-center">
         www.garage2share.com
     </div>
-</div>			
+</div>	
 </body>
-  <script type="text/javascript">
-  	$(document).ready(function(){
-        $('#agregar').click(function(){
-			var tipo = document.getElementById("tipo");
-			var lugar = document.getElementById("lugar");
-			var direccion = document.getElementById("direccion");
-			var plaza = document.getElementById("plaza");
-			var codigo = document.getElementById("codigo");
-			var precio = document.getElementById("precio");
-			var horainicial = document.getElementById("horainicial");
-			var horafinal = document.getElementById("horafinal");
-			var diainicial = document.getElementById("diainicial");
-			var diafinal = document.getElementById("diafinal");
-			var fallo = 0;
-			
-			//	COMPROBAR TIPO Y LUGAR
-			if((diainicial.value > diafinal.value || diainicial.value == diafinal.value && horainicial.value >= horafinal.value)){
-				alertify.error("El horario inicial debe ser anterior que el final!");
-				fallo = 1;
-			}else{
-				fechainicial=diainicial.value+'/'+horainicial.value;
-				fechafinal=diafinal.value+'/'+horafinal.value;
-			}
-			
-			if((direccion.value == null || direccion.value=="")){
-				direccion.style.backgroundColor = '#ff0000';
-				fallo = 1;
-			}
-			if((plaza.value == null || plaza.value=="")){
-				plaza.style.backgroundColor = '#ff0000';
-				fallo = 1;
-			}else if(isNaN(plaza.value)){			
-				alertify.error("EL campo plaza debe ser un numero!");
-				plaza.style.backgroundColor = '#ff0000';
-				fallo = 1;		
-			}
-			if((codigo.value == null || codigo.value=="")){
-				codigo.style.backgroundColor = '#ff0000';
-				fallo = 1;
-			}else if(isNaN(codigo.value)){			
-				alertify.error("EL campo codigo debe ser un numero!");
-				codigo.style.backgroundColor = '#ff0000';
-				fallo = 1;		
-			}
-			if((precio.value == null || precio.value=="")){
-				precio.style.backgroundColor = '#ff0000';
-				fallo = 1;
-			}
-			if((horainicial.value == null || horainicial.value=="")){
-				horainicial.style.backgroundColor = '#ff0000';
-				fallo = 1;
-			}
-			if((horafinal.value == null || horafinal.value=="")){
-				horafinal.style.backgroundColor = '#ff0000';
-				fallo = 1;
-			}
-			if(fallo == 0){			
-				registrarGaraje(tipo.value,lugar.value,direccion.value,plaza.value,codigo.value,precio.value,fechainicial,fechafinal);
-			}
-			else{
-				alertify.error("Es necesario rellenar todos los campos.");
-				horainicial.style.backgroundColor = '#ffffff';
-				horafinal.style.backgroundColor = '#ffffff';
-				codigo.style.backgroundColor = '#ffffff';
-				precio.style.backgroundColor = '#ffffff';
-				plaza.style.backgroundColor = '#ffffff';
-				direccion.style.backgroundColor = '#ffffff';
-				
-			}
-        });
-    });
-
-</script>
 </html>

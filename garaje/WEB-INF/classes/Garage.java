@@ -10,9 +10,11 @@ public class Garage {
   private String price; /* Precio por hora */
   private String vehicle; /* Tipo de vehiculo */
   private String status; /* TRUE:Libre/FALSE:Ocupado */
-  private String initialTime; /* Fecha Inicio */
-  private String endTime; /* Fecha Inicio */
-  private String userId;
+  private int initialTime; /* Fecha Inicio */
+  private int initialHour; /* Hora Inicio */
+  private int endTime; /* Fecha Fin */
+  private int endHour; /* Fecha Fin */
+  private int userId;
 
   public Garage() {
   }
@@ -22,7 +24,7 @@ public class Garage {
     this.id = id;
   }
 
-  public Garage(int id, String place, String direction, String space, String code, String price, String vehicle, String status, String endTime, String initialTime, String userId) {
+  public Garage(int id, String place, String direction, String space, String code, String price, String vehicle, String status, int initialTime, int initialHour, int endTime, int endHour, int userId) {
     this();
     this.id = id;
     this.place = place;
@@ -32,11 +34,13 @@ public class Garage {
     this.price = price;
     this.vehicle = vehicle;
     this.status = status;
-    this.endTime = endTime;
     this.initialTime = initialTime;
+    this.initialHour = initialHour;
+    this.endTime = endTime;
+    this.endHour = endHour;
   }
 
-  public Garage(String place, String direction, String space, String code, String price, String vehicle, String status, String endTime, String initialTime, String userId) {
+  public Garage(String place, String direction, String space, String code, String price, String vehicle, String status, int initialTime, int initialHour, int endTime, int endHour, int userId) {
 	    this();
 	    this.place = place;
 	    this.direction = direction;
@@ -45,8 +49,10 @@ public class Garage {
 	    this.price = price;
 	    this.vehicle = vehicle;
 	    this.status = status;
-	    this.endTime = endTime;
-	    this.initialTime = initialTime;
+		this.initialTime = initialTime;
+		this.initialHour = initialHour;
+		this.endTime = endTime;
+		this.endHour = endHour;
 	  }
 
   public int getId() {
@@ -113,27 +119,43 @@ public class Garage {
     this.vehicle = vehicle;
   }
 
-    public String getInitialTime() {
+   public int getInitialTime() {
     return this.initialTime;
   }
 
-  public void setInitialTime(String initialTime) {
+  public void setInitialTime(int initialTime) {
     this.initialTime = initialTime;
   }
   
-  public String getEndTime() {
+  public int getInitialHour() {
+    return this.initialHour;
+  }
+
+  public void setInitialHour(int initialHour) {
+    this.initialHour = initialHour;
+  }
+  
+  public int getEndHour() {
+    return this.endHour;
+  }
+
+  public void setEndTime(int endHour) {
+    this.endTime = endHour;
+  }
+  
+  public int getEndTime() {
     return this.endTime;
   }
 
-  public void setEndTime(String endTime) {
+  public void setEndTime(int endTime) {
     this.endTime = endTime;
   }
   
-    public String getUserId() {
+    public int getUserId() {
     return this.userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(int userId) {
     this.userId = userId;
   }
   

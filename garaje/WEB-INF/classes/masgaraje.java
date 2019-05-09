@@ -1,4 +1,4 @@
-
+	
 import java.io.*;
 import java.util.ArrayList;
 
@@ -18,8 +18,10 @@ public class masgaraje extends HttpServlet {
 			DBInteraction db = new DBInteraction();
 						
 			Garage gar = db.listfreeidgarages(id).get(0);
-			String hora_inicio = gar.getInitialTime();
-			String hora_fin = gar.getEndTime();
+			int fecha_inicio = gar.getInitialTime();
+			int hora_inicio = gar.getInitialHour();
+			int fecha_fin = gar.getEndTime();
+			int hora_fin = gar.getEndHour();
 			String lugar = gar.getPlace();
 			String direccion = gar.getDirection();
 			String precio = gar.getPrice();
@@ -27,8 +29,8 @@ public class masgaraje extends HttpServlet {
 			
 			response.setContentType("text/html");
 			RequestDispatcher view=request.getRequestDispatcher("/view/masgaraje.jsp?id="+id+
-							"&hora_inicio="+hora_inicio+"&hora_fin="+hora_fin+"&lugar="+lugar+
-							"&direccion="+direccion+"&precio="+precio+"&tipo="+tipo);
+							"&fecha_inicio="+fecha_inicio+"&hora_inicio="+hora_inicio+"&fecha_fin="+fecha_fin+
+							"&hora_fin="+hora_fin+"&lugar="+lugar+"&direccion="+direccion+"&precio="+precio+"&tipo="+tipo);
 			view.include(request, response);
 		
 			db.close();

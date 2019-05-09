@@ -8,13 +8,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="funcionesAjax.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css" />
+	<link href="style/checkbox.css" rel="stylesheet" type="text/css" />
+	<link href="lstyle/loading.css" rel="stylesheet" type="text/css" />
+	<script src="style/jquery-3.3.1.min.js"></script>
+	<script src="style/bootstrap/js/bootstrap.js"></script>
+	<script src="style/alertifyjs/alertify.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>	
   <style>
       .header1 
       {
       	font-size:150%;
-        color: black;
-        padding: 20px;
+        color: #0B618A;
+        padding: 10px;
         text-align: center;
   		position: relative;
       }
@@ -28,7 +37,7 @@
       }
       .downText 
       {
-      	color: black;
+      	color: #0B618A;
       	text-align: center;
   		position: relative;
       }
@@ -37,55 +46,74 @@
       	 background-size:100% 100%;
       	 background-opacity:0.4;
       }
+      h1,h2{
+		  font-size:40px;
+		  color:white;
+		  -webkit-text-stroke-width:2px;
+		  -webkit-text-stroke-color: #0B618A;
+		  }
+      label, input{
+		  color: #0B618A;
+		  font-weight:bold;
+		  text-align:center;
+	  }
   </style>
 
 </head>
 <body background= garajePortada.jpg class="back">
 	<div class="header1" >
         <div class="text-center">
-      		<h1>Garage2Share</h1>
+      		<h1><strong>Garage2Share</strong></h1>
     	 </div>
     </div>  
  <div class="Text">  
     <div>
         <div>
-              <h2 class="text-center">
+              <h2 class="text-center"><strong>
               	Indícanos los siguientes datos para proceder con el registro
-              </h2>
+              </strong></h2>
         </div>
-        <br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <div>
             <div>
-				<label for="email">Usuario:</label>
+				<label for="email">Usuario</label>
                 <input type="text" class="form-control"  id="nuevoUsuario" name="nuevoUsuario">
 			</div>
             <br>
             <div>
-                <label for="contraseña">Contraseña:</label>
+                <label for="contraseña">Contraseña</label>
                 <input type="password" class="form-control" id="contraseña"  name="contraseña">
             </div>
             <br>
             <div>
-			    <label >Nombre:</label>
+			    <label >Nombre</label>
 			    <input type="text" class="form-control"  id="nombre" name="nombre">
 			</div>
 			<br>
 			<div>
-			    <label >Apellido:</label>
+			    <label >Apellido</label>
 			    <input type="text" class="form-control"  id="apellido" name="apellido">
 			</div>
 			<br>
 			<div>
-			    <label >Mail:</label>
+			    <label >Mail</label>
 			    <input type="text" class="form-control"  id="mail" name="mail">
 			</div>
 			<br>
 			<div>
-			    <label >Telefono:</label>
+			    <label >Telefono</label>
 			    <input type="text" class="form-control"  id="telefono" name="telefono">
 			</div>
          	<br>
-            <button type="submit"  id="registro" name="registro" >Registrar</button>
+		<button class="btn btn-info" id="registro">
+			<span  class="glyphicon glyphicon-user"></span> Registrar Usuario</button>
             <p></p>
             <p></p>       
         </div>

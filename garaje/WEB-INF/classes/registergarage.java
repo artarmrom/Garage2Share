@@ -21,8 +21,10 @@ public class registergarage extends HttpServlet {
 		String space = request.getParameter("space");
 		String code = request.getParameter("code");
 		String price = request.getParameter("price");
-		String initialTime = request.getParameter("initialTime");
-		String endTime = request.getParameter("endTime");
+		int initialTime = Integer.parseInt(request.getParameter("initialTime"));
+		int initialHour = Integer.parseInt(request.getParameter("initialHour"));
+		int endTime = Integer.parseInt(request.getParameter("endTime"));
+		int endHour = Integer.parseInt(request.getParameter("endHour"));
 		String status = "true";
 		int userId = Integer.parseInt(id);
 		
@@ -41,7 +43,7 @@ public class registergarage extends HttpServlet {
 			}
 
 			if(stat=="404"){
-				db.addgar(place, direction, space, code, price, vehicle, status, initialTime, endTime, userId);
+				db.addgar(place, direction, space, code, price, vehicle, status, initialTime, initialHour, endTime, endHour, userId);
         		
 				stat = "200";
 			}

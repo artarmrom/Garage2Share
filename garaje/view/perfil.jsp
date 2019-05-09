@@ -1,20 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix ="c" %>
-<!DOCTYPE html>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <title>Garage2Share</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css" />
+	<link href="style/checkbox.css" rel="stylesheet" type="text/css" />
+	<link href="lstyle/loading.css" rel="stylesheet" type="text/css" />
+	<script src="style/jquery-3.3.1.min.js"></script>
+	<script src="style/bootstrap/js/bootstrap.js"></script>
+	<script src="style/alertifyjs/alertify.js"></script>
+	<script src="funcionesAjax.js"></script>
   <style>
       .header1 
       {
       	font-size:150%;
         color: black;
-        padding: 60px;
+        padding: 80px;
         text-align: center;
   		position: relative;
       }
@@ -102,6 +110,17 @@
 		background-color:#b5f2f2;
 		align:center;
 		}
+		
+						  		h1,h2{
+		  font-size:40px;
+		  color:#0B618A;
+		  }
+		  
+		        label, input{
+		  color: #0B618A;
+		  font-weight:bold;
+		  text-align:center;
+	  }
   </style>
 </head>
 <body>
@@ -120,30 +139,38 @@
 </header>
 	<div class="header1" >
         <div class="text-center">
-      		<h1>Garage2Share</h1>
+      		<h1><strong>Garage2Share</strong></h1>
     	 </div>
     </div>  
  <div class="Text">  
     <div>
         <div>
-              <h2 class="text-center">
+              <h1 class="text-center"><strong>
               	Bienvenido a tu perfil!
-              </h2>
+              </strong></h2>
         </div>
-        <br></br>
-    <p></p> 
-        <div >            	
-         <form  style="float: left;padding-left:33%" action="/garaje/vermisgarajes" method = "get"><button class = "boton" type="submit" id = "verG">Ver Todos</button></form>
-         <form  style="float: left" action="/garaje/vermisgarajeslibres" method = "get"><button class = "boton" type="submit" id = "verG">Ver Libres</button></form>
-         <form  style="float: left" action="/garaje/vermisgarajesocupados" method = "get"><button class = "boton" type="submit" id = "verG">Ver Ocupados</button></form>
-    </div>
-    <br></br>
-    <p></p>
-     <p></p>
-    <div><h3>Mi perfil</h3></div> 
-    <br></br>
-    <p></p>     
-        <div>
+	<div id="collapseTotal">
+	<div class="col-sm-12" align="center">
+		
+			 <button class = "btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapseP" data-parent="#collapseTotal" aria-expanded="false" aria-controls="collapseP" id = "miPerfil">
+				 <span  class="glyphicon glyphicon-triangle-bottom" id="iconPerfil"></span>Mi perfil</button>
+			 <button class = "btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapseB" data-parent="#collapseTotal" aria-expanded="false" aria-controls="collapseB" id = "miGaraje">
+				 <span  class="glyphicon glyphicon-triangle-bottom" id="iconGaraje"></span>Mis garajes</button>
+			 <button class = "btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapseC" data-parent="#collapseTotal" aria-expanded="false" aria-controls="collapseC" id = "miHistorial">
+				 <span  class="glyphicon glyphicon-triangle-bottom" id="iconHistorial"></span>Historial de Contratos</button>
+		
+		<div class="collapse" id="collapseB">
+		          	
+         <form  style="float: left" action="/garaje/vermisgarajes" method = "get"><button class = "btn btn-secondary" type="submit" data-toggle="collapse" data-target="#collapseG" data-parent="#collapseTotal" aria-expanded="false" aria-controls="collapseG" id = "verGTodos">
+			 <span  class="glyphicon glyphicon-triangle-bottom" id="iconGTodos"></span>Ver Todos</button></form>
+         <form  style="float: left" action="/garaje/vermisgarajeslibres" method = "get"><button class = "btn btn-secondary" type="submit" data-toggle="collapse" data-target="#collapseG" data-parent="#collapseTotal" aria-expanded="false" aria-controls="collapseG" id = "verGLibres">
+			 <span  class="glyphicon glyphicon-triangle-bottom" id="iconGLibres"></span>Ver Libres</button></form>
+         <form  style="float: left" action="/garaje/vermisgarajesocupados" method = "get"><button class = "btn btn-secondary" type="submit" data-toggle="collapse" data-target="#collapseG" data-parent="#collapseTotal" aria-expanded="false" aria-controls="collapseG" id = "verGOcupados">
+			 <span  class="glyphicon glyphicon-triangle-bottom" id="iconGOcupados"></span>Ver Ocupados</button></form>
+
+		</div>
+        <div class="collapse" id="collapseP">
+		<div class="well">
         Usuario:<%=request.getParameter("user")%>
         	<p></p>
         Nombre:<%=request.getParameter("name") %>
@@ -154,19 +181,19 @@
         <p></p>
         Mail:<%=request.getParameter("mail") %>
         <p></p>            
+         </div>           
          </div>                       
     </div>
-    <h3>Mis garajes</h3>
-    <p></p>
-    
-    <br></br>
-    <p></p>
+		<div class="collapse" id="collapseG">
+		<div class="well">
     <form>
-    <div>
-    	<table style="margin: 0 auto;" class = "table"  border = "1">
+		
+    	<table style="margin: 0 auto;" class = "table table-hover table-condensed table-bordered table-striped"  border = "1">
 		<tr>
 			<th class = "tableHead"> Identificador</th>
+			<th class = "tableHead"> Fecha inicio</th>
 			<th class = "tableHead"> Hora inicio</th>
+			<th class = "tableHead"> Fecha fin</th>
 			<th class = "tableHead"> Hora fin</th>
 			<th class = "tableHead"> Lugar</th>
 			<th class = "tableHead"> Dirección</th>
@@ -183,7 +210,13 @@
             <c:out value="${g.initialTime}"></c:out> 
         </td>
         <td>
+            <c:out value="${g.initialHour}"></c:out> 
+        </td>
+        <td>
             <c:out value="${g.endTime}"></c:out> 
+        </td>
+        <td>
+            <c:out value="${g.endHour}"></c:out> 
         </td>
         <td>
             <c:out value="${g.place}"></c:out> 
@@ -203,16 +236,17 @@
     </tr>
    </c:forEach>
    </table>
-    </div>
     </form>
-    <h3>Mis contratos</h3>
-    <p></p>
+   </div>
+    </div>
+	<div class="collapse" id="collapseC">
+	<div class="well">
     <form action="/garaje/vercontrato" method="get">
-    <div>
-    	<table style="margin: 0 auto;" class = "table"  border = "1">
+    	<table style="margin: 0 auto;" class="table table-hover table-condensed table-bordered table-striped"  border = "1">
 		<tr>
 			<th class = "tableHead"> Identificador</th>
 			<th class = "tableHead"> Horas totales</th>
+			<th class = "tableHead"> Fecha inicio</th>
 			<th class = "tableHead"> Hora inicio</th>
 			<th class = "tableHead"> Tipo de vehiculo</th>
 			<th class = "tableHead"> Estado</th>
@@ -226,10 +260,13 @@
             <c:out value="${g.id}"></c:out> 
         </td>
         <td>
+            <c:out value="${g.hours}"></c:out> 
+        </td>
+        <td>
             <c:out value="${g.initialTime}"></c:out> 
         </td>
         <td>
-            <c:out value="${g.endTime}"></c:out> 
+            <c:out value="${g.initialHour}"></c:out> 
         </td>
         <td>
             <c:out value="${g.place}"></c:out> 
@@ -249,8 +286,11 @@
     </tr>
    </c:forEach>
    </table>
-    </div>
     </form>
+    </div>
+    </div>
+  </div>
+  </div>
   </div>
 <div class="downText" >
     <div class="text-center">
@@ -258,4 +298,118 @@
     </div>
 </div>			
 </body>
+<script text="">
+
+$(document).ready(function() {
+    $('#miPerfil').click(function(){
+    if($("#miGaraje").hasClass("btn btn-link")){
+        $("#miGaraje").attr("class","btn btn-primary");
+    }
+    if($("#iconGaraje").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGaraje").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    if($("#miHistorial").hasClass("btn btn-link")){
+        $("#miHistorial").attr("class","btn btn-primary");
+    }
+    if($("#iconHistorial").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconHistorial").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+        $('#collapseC').collapse('hide');
+        $('#collapseB').collapse('hide');
+        modColor('#miPerfil','#iconPerfil');
+    });
+    
+    $('#miGaraje').click(function(){
+    if($("#miPerfil").hasClass("btn btn-link")){
+        $("#miPerfil").attr("class","btn btn-primary");
+    }
+    if($("#iconPerfil").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconPerfil").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    if($("#miHistorial").hasClass("btn btn-link")){
+        $("#miHistorial").attr("class","btn btn-primary");
+    }
+    if($("#iconHistorial").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconHistorial").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+        $('#collapseP').collapse('hide');
+        $('#collapseC').collapse('hide');
+        modColor('#miGaraje','#iconGaraje');
+    });
+    
+    $('#miHistorial').click(function(){
+    if($("#miPerfil").hasClass("btn btn-link")){
+        $("#miPerfil").attr("class","btn btn-primary");
+    }
+    if($("#iconPerfil").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconPerfil").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    if($("#miGaraje").hasClass("btn btn-link")){
+        $("#miGaraje").attr("class","btn btn-primary");
+    }
+    if($("#iconGaraje").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGaraje").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+        $('#collapseP').collapse('hide');
+        $('#collapseB').collapse('hide');
+        modColor('#miHistorial','#iconHistorial');
+    });
+
+
+
+    $('#verGTodos').click(function(){
+    if($("#verGLibres").hasClass("btn btn-link")){
+        $("#verGLibres").attr("class","btn btn-primary");
+    }
+    if($("#iconGLibres").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGLibres").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    if($("#verGOcupados").hasClass("btn btn-link")){
+        $("#verGOcupados").attr("class","btn btn-primary");
+    }
+    if($("#iconGOcupados").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGOcupados").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+
+        modColor('#verGTodos','#iconGTodos');
+    });
+    
+    $('#verGLibres').click(function(){
+    if($("#verGTodos").hasClass("btn btn-link")){
+        $("#verGTodos").attr("class","btn btn-primary");
+    }
+    if($("#iconGTodos").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGTodos").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    if($("#verGOcupados").hasClass("btn btn-link")){
+        $("#verGOcupados").attr("class","btn btn-primary");
+    }
+    if($("#iconGOcupados").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGOcupados").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+
+        modColor('#verGLibres','#iconGLibres');
+    });
+    
+    $('#verGOcupados').click(function(){
+    if($("#verGTodos").hasClass("btn btn-link")){
+        $("#verGTodos").attr("class","btn btn-primary");
+    }
+    if($("#iconGTodos").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGTodos").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    if($("#verGLibres").hasClass("btn btn-link")){
+        $("#verGLibres").attr("class","btn btn-primary");
+    }
+    if($("#iconGLibres").hasClass("glyphicon glyphicon-triangle-top")){
+        $("#iconGLibres").attr("class","glyphicon glyphicon-triangle-bottom");
+    }
+    
+        modColor('#verGOcupados','#iconGOcupados');
+    });
+    
+    
+    
+});    
+</script>
 </html>

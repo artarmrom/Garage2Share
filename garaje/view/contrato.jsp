@@ -9,6 +9,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css" />
+	<link href="style/checkbox.css" rel="stylesheet" type="text/css" />
+	<link href="lstyle/loading.css" rel="stylesheet" type="text/css" />
+	<script src="style/jquery-3.3.1.min.js"></script>
+	<script src="style/bootstrap/js/bootstrap.js"></script>
+	<script src="style/alertifyjs/alertify.js"></script>
   <style>
       .header1 
       {
@@ -101,6 +111,11 @@
 		padding-right:15px;
 		background-color:#b5f2f2;
 		}
+		
+		 h1,h2{
+		  font-size:40px;
+		  color: #0B618A;
+		  }
   </style>
 </head>
 <body>
@@ -119,38 +134,42 @@
 </header>
 	<div class="header1" >
         <div class="text-center">
-      		<h1>Garage2Share</h1>
+      		<h1><strong>Garage2Share</strong></h1>
     	 </div>
     </div>  
  <div class="Text">  
     <div>
         <div>
-              <h2 class="text-center">
+              <h2 class="text-center"><strong>
               	Estos son los datos de tu alquiler de garaje:
-              </h2>
+              </strong></h2>
         </div>       
         <div>
-        Número de horas:<%=request.getParameter("hours")%>
+        Dia inicial reserva<%=request.getParameter("initialTime") %>/05
         <p></p>
-        Tiempo inicial reserva:<%=request.getParameter("initialTime") %>
+        Hora inicial reserva<%=request.getParameter("initialHour") %>:00
         <p></p>
-        Tipo de vehículo:<%=request.getParameter("vehicle") %>
+        Dia fin reserva<%=request.getParameter("endTime") %>/05
         <p></p>
-        Lugar:<%=request.getParameter("place") %>
+        Hora fin reserva<%=request.getParameter("endHour") %>:00
         <p></p>
-		Direccion:<%=request.getParameter("direction") %>
+        Tipo de vehículo<%=request.getParameter("vehicle") %>
         <p></p>
-        Número de plaza:<%=request.getParameter("space") %>
+        Lugar<%=request.getParameter("place") %>
         <p></p>
-        Código de entrada al garaje:<%=request.getParameter("code") %>
+		Direccion<%=request.getParameter("direction") %>
+        <p></p>
+        Número de plaza<%=request.getParameter("space") %>
+        <p></p>
+        Código de entrada al garaje<%=request.getParameter("code") %>
         <p></p> 
-        Nombre del arrendador:<%=request.getParameter("name") %>
+        Nombre del arrendador<%=request.getParameter("name") %>
         <p></p> 
-        Apellido del arrendador:<%=request.getParameter("surname") %>
+        Apellido del arrendador<%=request.getParameter("surname") %>
         <p></p>
-        Número de teléfono:<%=request.getParameter("phone") %>
+        Número de teléfono<%=request.getParameter("phone") %>
         <p></p>
-        Mail del arrendador:<%=request.getParameter("mail") %>
+        Mail del arrendador<%=request.getParameter("mail") %>
         <p></p>               
          </div>                       
     </div>

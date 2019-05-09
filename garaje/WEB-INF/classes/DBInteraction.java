@@ -80,9 +80,8 @@ public class DBInteraction {
 	}
 
 	//This method adds a new activity in the GARAGES table using the data passed as parameters
-	public void addgar( String place, String direction, String space, String code, String price, String vehicle, String status,  String initialTime, String endTime, int userId)throws Exception{
-		
-		String addgarage="INSERT INTO GARAGES (PLACE, DIRECTION, SPACE, CODE, PRICE, VEHICLE, STATUS, INITIALTIME, ENDTIME, USERID) VALUES ('"+place+"','"+direction+"','"+space+"','"+code+"','"+price+"','"+vehicle+"','"+status+"','"+initialTime+"','"+endTime+"','"+userId+"')";
+	public void addgar( String place, String direction, String space, String code, String price, String vehicle, String status, String initialTime, String initialHour, String endTime, String endHour, int userId)throws Exception{
+		String addgarage="INSERT INTO GARAGES (PLACE, DIRECTION, SPACE, CODE, PRICE, VEHICLE, STATUS, INITIALTIME, INITIALHOUR, ENDTIME,  ENDHOUR, USERID) VALUES ('"+place+"','"+direction+"','"+space+"','"+code+"','"+price+"','"+vehicle+"','"+status+"','"+initialTime+"','"+initialHour+"','"+endTime+"','"+endHour+"','"+userId+"')";
 		q.doUpdate(addgarage);
 		
 	}
@@ -94,8 +93,8 @@ public class DBInteraction {
 	}
 
 	//This method adds a new pavillion in the CONTRACTS table using the data passed as parameters
-	public void addcont(int owner, int customer, int garage, int hours, String price, String initialTime, String vehicle, String status) throws Exception{
-		String addcontract="INSERT INTO CONTRACTS (OWNER, CUSTOMER, GARAGE, HOURS, PRICE, INITIALTIME, VEHICLE, STATUS) VALUES ('"+owner+"','"+customer+"','"+garage+"','"+hours+"','"+price+"','"+initialTime+"','"+vehicle+"','"+status+"')";
+	public void addcont(int owner, int customer, int garage, int hours, String price, String initialTime, String initialHour, String vehicle, String status) throws Exception{
+		String addcontract="INSERT INTO CONTRACTS (OWNER, CUSTOMER, GARAGE, HOURS, PRICE, INITIALTIME, INITIALHOUR, VEHICLE, STATUS) VALUES ('"+owner+"','"+customer+"','"+garage+"','"+hours+"','"+price+"','"+initialTime+"','"initialHour+"','"+vehicle+"','"+status+"')";
 		q.doUpdate(addcontract);
 	}
 
@@ -151,10 +150,12 @@ public class DBInteraction {
 			String price = rs.getString(6);
 			String vehicle = rs.getString(7);
 			String status = rs.getString(8);
-			String initialTime = rs.getString(9);
-			String endTime = rs.getString(10);
-			String userId = rs.getString(11);
-			data.add(new Garage(id, place, direction, space, code, price, vehicle, status, initialTime, endTime, userId));
+			int initialTime = rs.getInt(9);
+			int initialHour = rs.getInt(100);
+			int endTime = rs.getInt(11);
+			int endHour = rs.getInt(12);
+			int userId = rs.getInt(13);
+			data.add(new Garage(id, place, direction, space, code, price, vehicle, status, initialTime, initialHour, endTime, endHour, userId));
 		}
 		return (data);
 	}
@@ -174,10 +175,11 @@ public class DBInteraction {
 			int garage = rs.getInt(4);
 			int hours = rs.getInt(5);
 			String price = rs.getString(6);
-			String initialTime = rs.getString(7);
-			String vehicle = rs.getString(8);
-			String status = rs.getString(9);
-			data.add(new Contract( id,owner, customer, garage, hours, price, initialTime, vehicle, status));
+			int initialTime = rs.getInt(7);
+			int initialTime = rs.getInt(8);
+			String vehicle = rs.getString(9);
+			String status = rs.getString(10);
+			data.add(new Contract(id, owner, customer, garage, hours, price, initialTime, initialHour, vehicle, status));
 		}
 		return (data);
 	}
@@ -260,7 +262,13 @@ public class DBInteraction {
 		ResultSet data = q.doSelect(selection);
 		return (data.next());
 	}
-
+	
+	
+	public boolean checkTimegar(int id, int initialTime, int initialHour, int endTime, int endHour) throws Exception{
+		String selection="SELECT * FROM GARAGES WHERE ID = '"+id+"' AND INITIALTIME <= '"+initialTime+"' AND INITIALHOUR <= '"+initialHour+"' AND ENDTIME >= '"+endTime+"' AND ENDHOUR >= '"+endHour+"'";";
+		ResultSet data =q.doSelect(selection);
+		return (data.next());		
+	}
 	
 	
 	// This method builds an SQL sentence for listing the contracts that a user has as a owner
@@ -319,10 +327,22 @@ public class DBInteraction {
 		return (data);
 	}
 	
-	public ArrayList<Garage> listgarplacveh(String place, String vehicle) throws Exception{
-		String selection="SELECT * FROM GARAGES WHERE PLACE = '"+place+"' AND VEHICLE ='"+vehicle+"'";
+	public ArrayList<Garage> listgaravail(String place, String vehicle, int initialTime, int initialHour, int endTime, int endHour) throws Exception{
+		String selection="SELECT * FROM GARAGES WHERE STATUS = 'TRUE' AND PLACE = '"+place+"' AND VEHICLE ='"+vehicle+"' AND INITIALTIME <= '"+initialTime+"' AND INITIALHOUR <= '"+initialHour+"' AND ENDTIME >= '"+endTime+"' AND ENDHOUR >= '"+endHour+"'";
 		ArrayList<Garage> data = this.listgarages(selection);
 		return (data);
 	}
+	
+	public void modstatgar(String status) throws Exception{
+		String selection="UPDATE GARAGES SET STATUS = '"+status+"'";
+		q.doUpdate(selection);
+	}
+	
+	public void modstatcont(String status) throws Exception{
+		String selection="UPDATE CONTRACTS SET STATUS = '"+status+"'";
+		q.doUpdate(selection);
+	}
+
+	
 	
 }

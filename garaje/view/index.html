@@ -8,6 +8,15 @@
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="/garaje/view/funcionesAjax.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css" />
+	<link href="style/checkbox.css" rel="stylesheet" type="text/css" />
+	<link href="lstyle/loading.css" rel="stylesheet" type="text/css" />
+	<script src="style/jquery-3.3.1.min.js"></script>
+	<script src="style/bootstrap/js/bootstrap.js"></script>
+	<script src="style/alertifyjs/alertify.js"></script>
   <style>
       .header1 
       {
@@ -39,21 +48,35 @@
       {
       	 background-size:100% 100%;
       	 background-opacity:0.4;
-      }    
+      }  
+      
+		h1,h2{
+		  font-size:40px;
+		  color:white;
+		  -webkit-text-stroke-width:2px;
+		  -webkit-text-stroke-color: #0B618A;
+		  }
+		  
+		        label, input{
+		  color: #0B618A;
+		  font-weight:bold;
+		  text-align:center;
+	  }
+		  
   </style>
 </head>
-<body background = "/garaje/view/garajePortada.jpg" class = "back" >
+<body background = "garajePortada.jpg" class = "back" >
 	<div class="header1" >
         <div class="text-center">
-      		<h1>Garage2Share</h1>
+      		<h1><strong>Garage2Share</strong></h1>
     	 </div>
     </div>  
  <div class="Text">  
     <div>
         <div>
-              <h2 class="text-center">
+              <h2 class="text-center"><strong>
               	Únete y beneficiate de las oportunidades que te ofrecemos!
-              </h2>
+              </strong></h2>
         </div>
         <p>
         </p>
@@ -70,8 +93,11 @@
                 <input type="password" class="form-control" id="pwd"  name="pwd">
             </div>
             <p> </p>
-            <button type="submit" id="iniciosesion">Iniciar sesión</button>
-            <button type="button" id="registrar" onclick="location='/garaje/view/registroUsuario.jsp'">Registrar Usuario</button>
+            <button id="iniciosesion" class="btn btn-info">
+			<span  class="glyphicon glyphicon-thumbs-up"></span> Inicia Sesion
+			</button>
+            <button class="btn btn-info" id="registrar" onclick="location='/garaje/view/registroUsuario.jsp'">
+			<span  class="glyphicon glyphicon-user"></span> Registrar Usuario</button>
             <p></p>
             <p></p>       
         </div>

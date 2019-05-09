@@ -7,7 +7,8 @@ public class Contract {
   private int garage; /* Id del garaje del propietario */
   private int hours; /* Horas totales */
   private String price; /* Precio total */
-  private String initialTime; /* Hora inicial */
+  private int initialTime; /* Fecha inicial */
+  private int initialHour; /* Hora inicial */
   private String vehicle; /* Coche/Moto/Caravana */
   private String status; /* TRUE:Activo/FALSE:Inactivo */
 
@@ -19,7 +20,7 @@ public class Contract {
     this.id = id;
   }
 
-  public Contract(int id, int owner,  int customer,  int garage, int hours, String price, String initialTime, String vehicle, String status) {
+  public Contract(int id, int owner,  int customer,  int garage, int hours, String price, int initialTime, int initialHour, String vehicle, String status) {
     this();
     this.id = id;
     this.owner = owner;
@@ -28,15 +29,17 @@ public class Contract {
     this.hours = hours;
     this.price = price;
     this.initialTime = initialTime;
+    this.initialHour = initialHour;
     this.vehicle = vehicle;
     this.status = status;
   }
 
-  public Contract(int hours, String price, String initialTime, String vehicle) {
+  public Contract(int hours, String price, String initialTime, String initialHour, String vehicle) {
     this();
     this.hours = hours;
     this.price = price;
     this.initialTime = initialTime;
+    this.initialHour = initialHour;
     this.vehicle = vehicle;
   }
 
@@ -88,12 +91,20 @@ public class Contract {
     this.price = price;
   }
 
-  public String getInitialTime() {
+  public int getInitialTime() {
     return this.initialTime;
   }
 
-  public void setInitialTime(String initialTime) {
+  public void setInitialTime(int initialTime) {
     this.initialTime = initialTime;
+  }
+ 
+  public int getInitialHour() {
+    return this.initialHour;
+  }
+
+  public void setInitialHour(int initialHour) {
+    this.initialHour = initialHour;
   }
   
     public String getVehicle() {

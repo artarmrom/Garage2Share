@@ -8,6 +8,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+ 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css" />
+	<link href="style/checkbox.css" rel="stylesheet" type="text/css" />
+	<link href="lstyle/loading.css" rel="stylesheet" type="text/css" />
+	<script src="style/jquery-3.3.1.min.js"></script>
+	<script src="style/bootstrap/js/bootstrap.js"></script>
+	<script src="style/alertifyjs/alertify.js"></script>
   <style>
       .header1 
       {
@@ -86,6 +97,17 @@
 		padding-right:15px;
 		background-color:#b5f2f2;
 		}
+		
+		  		h1,h2{
+		  font-size:40px;
+		  color:#0B618A;
+		  }
+		  
+		        label, input{
+		  color: #0B618A;
+		  font-weight:bold;
+		  text-align:center;
+	  }
   </style>
 </head>
 <body>
@@ -103,40 +125,51 @@
 </header>
 	<div class="header1" >
         <div class="text-center">
-      		<h1>Garage2Share</h1>
+      		<h1><strong>Garage2Share</strong></h1>
     	 </div>
     </div>  
  <div class="Text">  
     <div>
         <div>
-              <h2 class="text-center">
+              <h2 class="text-center"><strong>
               	Estas a punto de reservar un garaje!
-              </h2>
+              </strong></h2>
         </div>
         <form action="/garaje/creacontrato" method="post">
         <div>
-        Hora inicial:<%=request.getParameter("hora_inicio")%>
+        Fecha inicial<%=request.getParameter("fecha_inicio")%>/05
         <p></p>
-        Hora maxima:<%=request.getParameter("hora_fin") %>
+        Hora inicial<%=request.getParameter("hora_inicio") %>:00
+        <div>
+        Hora maxima<%=request.getParameter("fecha_fin")%>/05
         <p></p>
-        Lugar:<%=request.getParameter("lugar") %>
+        Fecha maxima<%=request.getParameter("hora_fin") %>:00
         <p></p>
-        Direccion:<%=request.getParameter("direccion") %>
+        Lugar<%=request.getParameter("lugar") %>
         <p></p>
-        Vehiculo:<%=request.getParameter("tipo") %>
+        Direccion<%=request.getParameter("direccion") %>
         <p></p>
-        Precio:<%=request.getParameter("precio") %>
+        Tipo de Vehiculo<%=request.getParameter("tipo") %>
+        <p></p>
+        Precio<%=request.getParameter("precio") %>
         <p></p>         
         <div>
-			<label for="horaini">Hora inicial que desea:</label>
+			<label for="fecha_inicio">fecha inicial que desea</label>
             <input type="text" class="form-control"  id="horaini" name="horaini">
 		</div>     
-		<p></p>         
+		<p></p>       
+		 <div>
+			<label for="hora_inicio">Hora inicial que desea</label>
+            <input type="text" class="form-control"  id="horaini" name="horaini">
+		</div>     
+		<p></p>    
         <div>
 			<label for="horas">Horas de estancia de su vehiculo:</label>
             <input type="text" class="form-control"  id="horas" name="horas">
 		</div> 
-		<button type="submit"  id="alquila" name="alquila" >Alquila</button>
+		<br/>
+		<button class="btn btn-info" type="submit"  id="alquila" name="alquila" >
+			<span  class="glyphicon glyphicon-briefcase"></span> Alquila</button>
 
          </div>        
          </form> 

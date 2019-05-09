@@ -8,6 +8,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link href="style/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css" />
+	<link href="style/alertifyjs/css/themes/default.css" rel="stylesheet" type="text/css" />
+	<link href="style/checkbox.css" rel="stylesheet" type="text/css" />
+	<link href="lstyle/loading.css" rel="stylesheet" type="text/css" />
+	<script src="style/jquery-3.3.1.min.js"></script>
+	<script src="style/bootstrap/js/bootstrap.js"></script>
+	<script src="style/alertifyjs/alertify.js"></script> 
   <style>
       .header1 
       {
@@ -103,6 +113,19 @@
 		  background: #b5f2f2;
 		}
 		
+		h1,h2{
+		  font-size:40px;
+		  color:white;
+		  -webkit-text-stroke-width:2px;
+		  -webkit-text-stroke-color: #0B618A;
+		  }
+		  
+		        h3{
+		  color: #0B618A;
+		  font-weight:bold;
+		  text-align:center;
+	  }
+		
 </style>
 </head>
 <body>
@@ -121,18 +144,18 @@
 </header>
 	<div class="header1" >
         <div >
-      		<h1>Garage2Share</h1>
+      		<h1><strong>Garage2Share</strong></h1>
     	 </div>
     </div>  
  <div class="Text">  
     <div>
         <div>
-              <h2 class="text-center">
+              <h3 class="text-center">
               	Garage2Share es una empresa fundada en Madrid y que se dedica a ofrecer alquileres 
               	de plazas de garaje tanto a interesados en alquilarlas como a interesados en ponerlas en alquiler.
               	Hasta el momento ofrecemos nuestros servicios en Madrid capital y en algunas ciudades más pequeñas del sur
               	de la capital como: Leganés, Villaverde, Getafe...
-              </h2>
+              </h3>
         </div>
      
     </div>

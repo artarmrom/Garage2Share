@@ -17,12 +17,6 @@ public class perfil extends HttpServlet {
 
 			ArrayList<User> userL = db.listpersonaluser(id);
 			
-			ArrayList<Garage> garage = db.listmybusygarages(id);
-			int busy = garage.size();
-			
-			ArrayList<Contract> contract = db.listmycustcontact(id);
-			int rented = contract.size();
-			
 			User  u = userL.get(0);
 			response.setContentType("text/html");
 			RequestDispatcher disp = request.getRequestDispatcher("/view/perfil.jsp?user="+u.getUser()+"&name="+u.getName()+"&surname="+u.getSurname()+"&phone="+u.getPhone()+"&mail="+u.getMail()+"&busy="+busy+"&rented="+rented);

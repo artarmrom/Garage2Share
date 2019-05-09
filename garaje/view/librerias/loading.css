@@ -1,0 +1,77 @@
+#loadingC {
+  float: right;
+  margin: 0 30px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -o-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -moz-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -webkit-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -ms-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  -webkit-animation: loadingC 1s infinite linear;
+  -moz-animation: loadingC 1s infinite linear;
+  -ms-animation: loadingC 1s infinite linear;
+  animation: loadingC 1s infinite linear;
+}
+
+@-webkit-keyframes loadingC {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loadingC {
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes loadingC {
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+@keyframes loadingC {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#loadingP {
+  float: right;
+  margin: 0 30px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -o-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -moz-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -webkit-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  background-image: -ms-linear-gradient(bottom, #802b00 50%, #F5DEB3 50%);
+  -webkit-animation: loadingP 1s infinite linear;
+  -moz-animation: loadingP 1s infinite linear;
+  -ms-animation: loadingP 1s infinite linear;
+  animation: loadingP 1s infinite linear;
+}
+
+@-webkit-keyframes loadingP {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loadingP {
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes loadingP {
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+@keyframes loadingP {
+  to {
+    transform: rotate(360deg);
+  }
+}

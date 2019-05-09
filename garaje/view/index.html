@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Garage2Share</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="/garaje/view/funcionesAjax.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <style>
+      .header1 
+      {
+      	font-size:150%;
+        color: black;
+        padding: 20px;
+        text-align: center;
+  		position: relative;
+      }
+      .Text 
+      { 
+     	padding: 30px;
+     	margin: 10px;
+     	margin-left: 100px;
+        text-align: center;
+  		position: relative;
+      }
+      .downText 
+      {
+      	color: black;
+      	text-align: center;
+  		position: relative;
+      }
+      .imagen
+      {
+      	opacity: 0.5;
+      }  
+      .back
+      {
+      	 background-size:100% 100%;
+      	 background-opacity:0.4;
+      }    
+  </style>
+</head>
+<body background = "/garaje/view/garajePortada.jpg" class = "back" >
+	<div class="header1" >
+        <div class="text-center">
+      		<h1>Garage2Share</h1>
+    	 </div>
+    </div>  
+ <div class="Text">  
+    <div>
+        <div>
+              <h2 class="text-center">
+              	Únete y beneficiate de las oportunidades que te ofrecemos!
+              </h2>
+        </div>
+        <p>
+        </p>
+        <p> 
+        </p>
+        <div>
+            <div>
+				<label for="email">Usuario:</label>
+                <input type="text" class="form-control"  id="usuario" name="usuario">
+            </div>
+            <p></p>
+            <div>
+                <label for="pwd">Contraseña:</label>
+                <input type="password" class="form-control" id="pwd"  name="pwd">
+            </div>
+            <p> </p>
+            <button type="submit" id="iniciosesion">Iniciar sesión</button>
+            <button type="button" id="registrar" onclick="location='/garaje/view/registroUsuario.jsp'">Registrar Usuario</button>
+            <p></p>
+            <p></p>       
+        </div>
+    </div>
+  </div>
+<div class="downText" >
+    <div class="text-center">
+        www.Garaje2Share.com
+    </div>
+</div>			
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+        $('#iniciosesion').click(function(){
+			var usuario = document.getElementById("usuario");
+			var pwd = document.getElementById("pwd");
+			var fallo = 0;
+			
+			if((usuario.value == null || usuario.value=="")){
+				usuario.style.backgroundColor = '#ff0000';
+				fallo = 1;
+			}
+			if((pwd.value == null || pwd.value=="")){
+				pwd.style.backgroundColor = '#ff0000';
+				fallo = 1;
+			}
+			if(fallo == 0){			
+				login(usuario.value, pwd.value);
+			}else
+				{
+					alert("Es necesario rellenar todos los campos.");
+					pwd.style.backgroundColor = '#ffffff';
+					usuario.style.backgroundColor = '#ffffff';
+				
+				}
+            
+        });
+    });
+</script>
+</html>

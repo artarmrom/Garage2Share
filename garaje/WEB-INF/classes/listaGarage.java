@@ -13,10 +13,10 @@ public class listaGarage extends HttpServlet {
     {		
 		String place = request.getParameter("lugar");
 		String vehicle = request.getParameter("tipo");
-		String initialTime = request.getParameter("diainicial"); 
-		String initialHour = request.getParameter("horainicial");
-		String endTime = request.getParameter("diafinal");
-		String endHour = request.getParameter("horafinal");
+		int initialTime = Integer.parseInt(request.getParameter("diainicial")); 
+		int initialHour = Integer.parseInt(request.getParameter("horainicial"));
+		int endTime = Integer.parseInt(request.getParameter("diafinal"));
+		int endHour = Integer.parseInt(request.getParameter("horafinal"));
 		
 		try{
 		

@@ -135,14 +135,6 @@ public class Garage {
     this.initialHour = initialHour;
   }
   
-  public int getEndHour() {
-    return this.endHour;
-  }
-
-  public void setEndTime(int endHour) {
-    this.endTime = endHour;
-  }
-  
   public int getEndTime() {
     return this.endTime;
   }
@@ -150,6 +142,15 @@ public class Garage {
   public void setEndTime(int endTime) {
     this.endTime = endTime;
   }
+    
+  public int getEndHour() {
+    return this.endHour;
+  }
+
+  public void setEndHour(int endHour) {
+    this.endTime = endHour;
+  }
+  
   
     public int getUserId() {
     return this.userId;

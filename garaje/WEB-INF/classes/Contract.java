@@ -34,7 +34,7 @@ public class Contract {
     this.status = status;
   }
 
-  public Contract(int hours, String price, String initialTime, String initialHour, String vehicle) {
+  public Contract(int hours, String price, int initialTime, int initialHour, String vehicle) {
     this();
     this.hours = hours;
     this.price = price;

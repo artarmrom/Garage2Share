@@ -19,7 +19,7 @@ public class perfil extends HttpServlet {
 			
 			User  u = userL.get(0);
 			response.setContentType("text/html");
-			RequestDispatcher disp = request.getRequestDispatcher("/view/perfil.jsp?user="+u.getUser()+"&name="+u.getName()+"&surname="+u.getSurname()+"&phone="+u.getPhone()+"&mail="+u.getMail()+"&busy="+busy+"&rented="+rented);
+			RequestDispatcher disp = request.getRequestDispatcher("/view/perfil.jsp?user="+u.getUser()+"&name="+u.getName()+"&surname="+u.getSurname()+"&phone="+u.getPhone()+"&mail="+u.getMail());
 			disp.include(request,response);						
 			db.close();
 		}catch(Exception ex){

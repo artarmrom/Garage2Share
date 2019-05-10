@@ -80,7 +80,7 @@ public class DBInteraction {
 	}
 
 	//This method adds a new activity in the GARAGES table using the data passed as parameters
-	public void addgar( String place, String direction, String space, String code, String price, String vehicle, String status, String initialTime, String initialHour, String endTime, String endHour, int userId)throws Exception{
+	public void addgar( String place, String direction, String space, String code, String price, String vehicle, String status, int initialTime, int initialHour, int endTime, int endHour, int userId)throws Exception{
 		String addgarage="INSERT INTO GARAGES (PLACE, DIRECTION, SPACE, CODE, PRICE, VEHICLE, STATUS, INITIALTIME, INITIALHOUR, ENDTIME,  ENDHOUR, USERID) VALUES ('"+place+"','"+direction+"','"+space+"','"+code+"','"+price+"','"+vehicle+"','"+status+"','"+initialTime+"','"+initialHour+"','"+endTime+"','"+endHour+"','"+userId+"')";
 		q.doUpdate(addgarage);
 		
@@ -93,8 +93,8 @@ public class DBInteraction {
 	}
 
 	//This method adds a new pavillion in the CONTRACTS table using the data passed as parameters
-	public void addcont(int owner, int customer, int garage, int hours, String price, String initialTime, String initialHour, String vehicle, String status) throws Exception{
-		String addcontract="INSERT INTO CONTRACTS (OWNER, CUSTOMER, GARAGE, HOURS, PRICE, INITIALTIME, INITIALHOUR, VEHICLE, STATUS) VALUES ('"+owner+"','"+customer+"','"+garage+"','"+hours+"','"+price+"','"+initialTime+"','"initialHour+"','"+vehicle+"','"+status+"')";
+	public void addcont(int owner, int customer, int garage, int hours, String price, int initialTime, int initialHour, String vehicle, String status) throws Exception{
+		String addcontract="INSERT INTO CONTRACTS (OWNER, CUSTOMER, GARAGE, HOURS, PRICE, INITIALTIME, INITIALHOUR, VEHICLE, STATUS) VALUES ('"+owner+"','"+customer+"','"+garage+"','"+hours+"','"+price+"','"+initialTime+"','"+initialHour+"','"+vehicle+"','"+status+"')";
 		q.doUpdate(addcontract);
 	}
 
@@ -176,7 +176,7 @@ public class DBInteraction {
 			int hours = rs.getInt(5);
 			String price = rs.getString(6);
 			int initialTime = rs.getInt(7);
-			int initialTime = rs.getInt(8);
+			int initialHour = rs.getInt(8);
 			String vehicle = rs.getString(9);
 			String status = rs.getString(10);
 			data.add(new Contract(id, owner, customer, garage, hours, price, initialTime, initialHour, vehicle, status));
@@ -265,7 +265,7 @@ public class DBInteraction {
 	
 	
 	public boolean checkTimegar(int id, int initialTime, int initialHour, int endTime, int endHour) throws Exception{
-		String selection="SELECT * FROM GARAGES WHERE ID = '"+id+"' AND INITIALTIME <= '"+initialTime+"' AND INITIALHOUR <= '"+initialHour+"' AND ENDTIME >= '"+endTime+"' AND ENDHOUR >= '"+endHour+"'";";
+		String selection="SELECT * FROM GARAGES WHERE ID = '"+id+"' AND INITIALTIME <= '"+initialTime+"' AND INITIALHOUR <= '"+initialHour+"' AND ENDTIME >= '"+endTime+"' AND ENDHOUR >= '"+endHour+"'";
 		ResultSet data =q.doSelect(selection);
 		return (data.next());		
 	}

@@ -20,13 +20,22 @@ public class crearcontrato extends HttpServlet {
 			DBInteraction db = new DBInteraction();	
 			
 			
-			int time1 = Integer.parseInt(time[0]);
-			int hour1 = Integer.parseInt(hour[0]);
+			int time1 = Character.getNumericValue(time.charAt(0));
+			int hour1 = Character.getNumericValue(hour.charAt(0));
 			
-			if(time1>9)
-				initialTime = Integer.parseInt(time[0]+time[1]);
-			if(hour1>9)
-				initialHour = Integer.parseInt(hour[0]+hour[1]);
+			int initialTime;
+			int initialHour;
+			
+			if(time1>9){
+				initialTime = time1 + Character.getNumericValue(time.charAt(1));
+			}else{
+				initialTime = time1;
+			}
+			if(hour1>9){
+				initialHour = hour1 + Character.getNumericValue(hour.charAt(1));
+			}else{
+				initialHour = hour1;
+			}
 			
 			int endHour = hours+initialHour;
 			int endTime = initialTime;
@@ -35,14 +44,14 @@ public class crearcontrato extends HttpServlet {
 				endTime=endTime+1;
 			}
 			
-			boolean time = db.checkTimegar(garage, initialTime, initialHour, endTime, endHour);
+			boolean cktime = db.checkTimegar(garage, initialTime, initialHour, endTime, endHour);
 				
-			if(time){	
+			if(cktime){	
 				Garage gar = db.listfreeidgarages(garage).get(0);
 				
 				HttpSession session = request.getSession(true);
 				int customer = Integer.parseInt((String)session.getAttribute("id"));
-				int owner = Integer.parseInt(gar.getUserId());
+				int owner = gar.getUserId();
 				int price = Integer.parseInt(gar.getPrice());
 				int totalPrice = price*hours;
 				String status = "true";
